@@ -1,5 +1,5 @@
 """ReutersDocument factory: HTMLParser for SGML files for Reuters dataset."""
-from reuters_parser.reuters_document import ReutersDocument
+from modules.reuters_parser.reuters_document import ReutersDocument
 from html.parser import HTMLParser
 
 

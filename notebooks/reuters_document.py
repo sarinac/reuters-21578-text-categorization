@@ -1,1 +1,0 @@
-/modules/parser/reuters_document.py
