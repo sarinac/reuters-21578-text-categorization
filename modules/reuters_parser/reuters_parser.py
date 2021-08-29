@@ -28,8 +28,7 @@ class ReutersParser(HTMLParser):
 
     def parse(self, feeed):
         """Decode and feed each line in the document to the parser."""
-        for line in feeed:
-            self.feed(line.decode(self.encoding))
+        self.feed(feeed.decode(self.encoding))
         self.close()
 
     """
