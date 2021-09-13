@@ -4,8 +4,9 @@ import re
 
 class ReutersDocument():
     
-    def __init__(self, id):
+    def __init__(self, id, split):
         self.id = id
+        self.split = split
         self.datetime = None
         self.topics = []
         self.places = []
@@ -50,6 +51,7 @@ class ReutersDocument():
     def to_json(self) -> dict:
         return {
             "id": self.id,
+            "split": self.split,
             "datetime": self.datetime,
             "topics": self.topics,
             "places": self.places,

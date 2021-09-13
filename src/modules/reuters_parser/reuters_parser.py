@@ -86,8 +86,10 @@ class ReutersParser(HTMLParser):
     """
     def start_reuters(self, attributes):
         """Add a new doc object into the factory."""
-        id = int(dict(attributes).get("newid", 0))
-        self.doc = ReutersDocument(id)
+        attributes = dict(attributes)
+        id = int(attributes.get("newid", 0))
+        split = attributes.get("lewissplit", "not-used").lower()
+        self.doc = ReutersDocument(id, split)
         self.reuters_factory.append(self.doc)
     
     def end_reuters(self):
