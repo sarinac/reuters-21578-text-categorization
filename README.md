@@ -11,9 +11,12 @@ Clone this git repository in [SageMaker Studio](https://aws.amazon.com/sagemaker
 * [How are the Reuters files organized?](https://link.springer.com/content/pdf/bbm%3A978-3-642-04533-2%2F1.pdf)
 * [How to create a baseline model?](https://towardsdatascience.com/how-to-build-a-baseline-model-be6ce42389fc)
 * [How can NLP be extended to different business use cases?](https://towardsdatascience.com/leveraging-on-nlp-to-gain-insights-in-social-media-news-broadcasting-ca89752ef638)
+* [How to create word embedding for classification?](https://towardsdatascience.com/using-word2vec-to-analyze-news-headlines-and-predict-article-success-cdeda5f14751)
+* [How do LSTMs work?](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 
 ## Notebooks
 
 1. `nb01_raw_to_clean.ipynb` - parses SGML files and restructures their content as JSON.
 2. `nb02_features.ipynb` - does preprocessing by vectorizing document text and splitting between train and test datasets.
 3. `nb03_baseline_models.ipynb` - creates baseline machine learning models for topic classification.
+4. `nb04_models.ipynb` - runs LSTM model on SageMaker.

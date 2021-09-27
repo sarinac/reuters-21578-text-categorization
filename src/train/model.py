@@ -18,16 +18,15 @@ class LSTMClassifier(nn.Module):
         """
         super(LSTMClassifier, self).__init__()
 
-        self.embedding = nn.Embedding(vocab_size, embedding_dim)
-        self.lstm = nn.LSTM(embedding_dim, hidden_dim, batch_first=True)
+        self.embedding = nn.Embedding(vocab_size, embedding_dim, padding_idx=0)
+        self.lstm = nn.LSTM(embedding_dim, hidden_dim)
         self.linear = nn.Linear(in_features=hidden_dim, out_features=1)
         self.activation = nn.Sigmoid()
-        
 
     def forward(self, x):
         """Conduct forward pass."""
-        x = x.t()
-        x = self.embedding(x)
-        x, _ = self.lstm(x)
-        x = self.linear(x)
-        return self.activation(x)
+        x = self.embedding(x)  # out: batch_size, seq_length, embedding_dim
+        x = torch.transpose(x, 0, 1)  # Same thing as LSTM's batch_first=True but more efficient?
+        x, (h, c) = self.lstm(x)  # out: seq_length, batch_size, hidden_dim
+        x = self.linear(h[-1])  # in: batch_size, hidden_dim; out: batch_size, 1
+        return self.activation(x.squeeze())
